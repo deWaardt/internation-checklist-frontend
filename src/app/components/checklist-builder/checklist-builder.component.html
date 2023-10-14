@@ -1,0 +1,11 @@
+<div class="outer-container">
+  <div class="container">
+    <h1>{{checklist.aircraft}}</h1>
+    <div class="section-container" *ngFor="let item of checklist.sections">
+      <h3>{{item.name}}</h3>
+      <div *ngFor="let check of item.items">
+        <app-checklistitem [text1]="check.text1" [text2]="check.text2"></app-checklistitem>
+      </div>
+    </div>
+  </div>
+</div>

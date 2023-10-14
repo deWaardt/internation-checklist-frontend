@@ -6,7 +6,10 @@
     "types": []
   },
   "files": [
-    "src/main.ts"
+    "src/main.ts",
+    "src/app/entities/ChecklistSection.ts",
+    "src/app/entities/Checklist.ts",
+    "src/app/entities/ChecklistItem.ts"
   ],
   "include": [
     "src/**/*.d.ts"

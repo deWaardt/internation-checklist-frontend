@@ -1,0 +1,55 @@
+<div class="outer-container">
+  <img *ngIf="!editor" src="https://cdn-icons-png.flaticon.com/512/7398/7398464.png" style="with: 45px; height: 45px; margin-top: 20px; cursor: pointer" (click)="editor = true">
+  <div *ngIf="!editor" class="container">
+    <h1>{{checklist!.aircraft}}</h1>
+    <div class="section-container" *ngFor="let item of checklist!.sections">
+      <h3>{{item.name}}</h3>
+      <div *ngFor="let check of item.items">
+        <app-checklistitem [text1]="check.text1" [text2]="check.text2"></app-checklistitem>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="editor" class="container">
+    <div (click)="saveChecklist()" class="btnContainer">
+      <div class="saveBtn">
+        <h1>Save</h1>
+      </div>
+      <div class="discardBtn">
+        <h1>Discard</h1>
+      </div>
+
+    </div>
+    <input [(ngModel)]="checklist!.aircraft" value="{{checklist!.aircraft}}" (focusout)="updateAircraft()" placeholder="Aircraft type" style="font-size: 40px; text-align: center; margin-bottom: 30px">
+    <div class="section-container" *ngFor="let section of checklist!.sections">
+      <input [(ngModel)]="section.name" style="font-size: 20px; margin-bottom: 20px">
+      <div *ngFor="let check of section.items" class="item-edit-mode">
+        <div class="add-item-container" (click)="addItemUnder(section.id, check.id)">
+          <div class="add-item2">
+            <h3>+</h3>
+          </div>
+          <div>
+            <p>-----------</p>
+          </div>
+        </div>
+        <app-checklistitem
+          [text1]="check.text1"
+          [text2]="check.text2"
+          [editor]="editor"
+          (text1Change)="check.text1 = $event"
+          (text2Change)="check.text2 = $event">
+        </app-checklistitem>
+        <div class="delete-item" (click)="removeItem(section.id, check.id)">
+          <p>-</p>
+        </div>
+      </div>
+      <div *ngIf="section.items.length == 0" class="add-item" (click)="addItem(section.id)">
+        <h1>+</h1>
+      </div>
+      <h1 class="delete-section" (click)="removeSectionById(section.id)">Delete section</h1>
+    </div>
+    <div class="add-section" (click)="addSection()">
+      <h1>+</h1>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+.goBack {
+  top: 0;
+  text-align: center;
+  left: 0;
+  width: 140px;
+  height: 30px;
+  padding: 10px;
+  cursor: pointer;
+  background: #5CDB95;
+  border-radius: 5px;
+  margin: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+
+  h2{
+    font-size: 25px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &:hover {
+    background: seagreen;
+    color: white;
+  }
+}

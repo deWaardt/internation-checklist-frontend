@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {ApiService} from "./services/api.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,29 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'internation-checklist';
+
+  checklist: Checklist | undefined;
+  checklists: Checklist[] = [];
+  checklistSelected: boolean = false;
+
+  constructor(private apiService: ApiService) {
+    this.apiService.getAllChecklists().subscribe((data: any) => {
+      this.checklists = data;
+    });
+  }
+
+  selectChecklist(checklist: Checklist) {
+    this.checklist = checklist;
+    this.checklistSelected = true;
+  }
+
+  newChecklist() {
+    this.checklist = {id: crypto.randomUUID(), aircraft: '', sections: []};
+    this.checklistSelected = true;
+  }
+
+  unselectChecklist() {
+    this.checklist = undefined;
+    this.checklistSelected = false;
+  }
 }
