@@ -13,7 +13,7 @@
   font-weight: bold;
   text-decoration: none;
 
-  h2{
+  h2 {
     font-size: 25px;
     margin: 0;
     padding: 0;
@@ -23,4 +23,46 @@
     background: seagreen;
     color: white;
   }
+}
+
+.aircraftPick {
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  background-color: #efefef;
+  box-shadow: #cccccc 0px 0px 5px 0px;
+  margin-top: 20px;
+  margin-left: 20px;
+
+  h1 {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  img {
+    margin-top: 10px;
+    border-radius: 15px;
+    box-shadow: #cccccc 0px 0px 10px 0px;
+    width: 400px;
+  }
+  &:hover {
+    transition: 0.2s;
+    background-color: #e8e8e8;
+    box-shadow: #949494 0px 0px 15px 0px;
+    cursor: pointer;
+  }
+
+}
+
+.aircraftPickContainer {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  margin-right: 10px;
+  justify-content: center;
+  flex-wrap: wrap
 }
