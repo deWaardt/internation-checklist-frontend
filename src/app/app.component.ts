@@ -13,6 +13,7 @@ export class AppComponent {
   checklists: Checklist[] = [];
   checklistSelected: boolean = false;
   editor: boolean = false;
+  editingAllowed: boolean = false;
 
   constructor(private apiService: ApiService) {
     this.apiService.getAllChecklists().subscribe((data: any) => {
@@ -39,5 +40,9 @@ export class AppComponent {
 
   imgError($event: any) {
     $event.target.src = 'https://www.creativefabrica.com/wp-content/uploads/2022/05/31/1654005204/Airplane-silhouette-580x386.jpg'
+  }
+
+  unlockEditing() {
+    this.editingAllowed = true;
   }
 }

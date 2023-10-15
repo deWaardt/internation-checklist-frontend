@@ -11,6 +11,7 @@ export class ChecklistsectionComponent {
   checklistSections: ChecklistSection[] = [];
   @Input() checklist: Checklist | undefined;
   @Input() editor: boolean = false;
+  @Input() editingAllowed: boolean = false;
 
   constructor(private apiService: ApiService) {
 

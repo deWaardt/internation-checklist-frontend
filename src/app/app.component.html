@@ -3,11 +3,15 @@
     <img src="https://icons.veryicon.com/png/o/miscellaneous/tool-icon-library/return-104.png">
   </div>
   <img src="assets/logo.png" class="logo">
+
+  <div class="unlockBtn" (click)="unlockEditing()">
+    <h1>Unlock editing</h1>
+  </div>
 </div>
 
 
 <div *ngIf="checklistSelected">
-  <app-checklistsection [checklist]="checklist" [editor]="editor"></app-checklistsection>
+  <app-checklistsection [checklist]="checklist" [editor]="editor" [editingAllowed]="editingAllowed"></app-checklistsection>
 </div>
 
 <div *ngIf="!checklistSelected" class="container">
@@ -19,7 +23,7 @@
       <h1>{{checklist.aircraft}}</h1>
     </div>
   </div>
-  <div class="addNew" (click)="newChecklist()">
+  <div class="addNew" *ngIf="editingAllowed" (click)="newChecklist()">
     <h2>Create a new checklist</h2>
   </div>
 </div>

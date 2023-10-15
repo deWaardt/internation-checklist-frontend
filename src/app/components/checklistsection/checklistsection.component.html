@@ -1,5 +1,5 @@
 <div class="outer-container">
-  <img *ngIf="!editor" src="https://cdn-icons-png.flaticon.com/512/7398/7398464.png" style="with: 45px; height: 45px; margin-top: 20px; cursor: pointer" (click)="editor = true">
+  <img *ngIf="!editor && editingAllowed" src="https://cdn-icons-png.flaticon.com/512/7398/7398464.png" style="with: 45px; height: 45px; margin-top: 20px; cursor: pointer" (click)="editor = true">
   <div *ngIf="!editor" class="container">
     <h1>{{checklist!.aircraft}}</h1>
     <div class="section-container" *ngFor="let item of checklist!.sections">
