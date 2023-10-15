@@ -12,6 +12,7 @@ export class AppComponent {
   checklist: Checklist | undefined;
   checklists: Checklist[] = [];
   checklistSelected: boolean = false;
+  editor: boolean = false;
 
   constructor(private apiService: ApiService) {
     this.apiService.getAllChecklists().subscribe((data: any) => {
@@ -25,12 +26,18 @@ export class AppComponent {
   }
 
   newChecklist() {
-    this.checklist = {id: crypto.randomUUID(), aircraft: '', sections: []};
+    this.checklist = {id: crypto.randomUUID(), image: '', aircraft: '', sections: []};
     this.checklistSelected = true;
+    this.editor = true;
   }
 
   unselectChecklist() {
+    this.editor = false;
     this.checklist = undefined;
     this.checklistSelected = false;
+  }
+
+  imgError($event: any) {
+    $event.target.src = 'https://www.creativefabrica.com/wp-content/uploads/2022/05/31/1654005204/Airplane-silhouette-580x386.jpg'
   }
 }

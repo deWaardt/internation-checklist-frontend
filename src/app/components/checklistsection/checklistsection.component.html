@@ -20,6 +20,8 @@
       </div>
 
     </div>
+    <p>Enter URL for aircraft image in this box:</p>
+    <input [(ngModel)]="checklist!.image" value="{{checklist!.image}}" style="margin-bottom: 50px">
     <input [(ngModel)]="checklist!.aircraft" value="{{checklist!.aircraft}}" (focusout)="updateAircraft()" placeholder="Aircraft type" style="font-size: 40px; text-align: center; margin-bottom: 30px">
     <div class="section-container" *ngFor="let section of checklist!.sections">
       <input [(ngModel)]="section.name" style="font-size: 20px; margin-bottom: 20px">

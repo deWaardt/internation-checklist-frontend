@@ -1,48 +1,25 @@
-<div *ngIf="!checklistSelected">
-  <div *ngFor="let checklist of checklists">
-    <h2 (click)="selectChecklist(checklist)">{{checklist.aircraft}}</h2>
+<div class="navbar">\
+  <div class="goBackBtn" *ngIf="checklistSelected" (click)="unselectChecklist()">
+    <img src="https://icons.veryicon.com/png/o/miscellaneous/tool-icon-library/return-104.png">
   </div>
-  <div>
-    <h2 (click)="newChecklist()">Add checklist</h2>
-  </div>
+  <img src="assets/logo.png" class="logo">
 </div>
 
 
 <div *ngIf="checklistSelected">
-  <div class="goBack"  (click)="unselectChecklist()">
-    <h2>Go back</h2>
-  </div>
-  <app-checklistsection [checklist]="checklist"></app-checklistsection>
+  <app-checklistsection [checklist]="checklist" [editor]="editor"></app-checklistsection>
 </div>
 
-<div *ngIf="!checklistSelected" class="aircraftPickContainer">
-  <div class="aircraftPick">
-    <img
-      src="https://images.flightsim.to/images/25/a32nx-internation-airways-rebranded-8k-livery-446974-1688314014-69MKP.jpg">
-    <h1>A20N</h1>
+<div *ngIf="!checklistSelected" class="container">
+  <h1 class="title">Select an aircraft</h1>
+  <div class="aircraftPickContainer">
+    <div class="aircraftPick" *ngFor="let checklist of checklists" (click)="selectChecklist(checklist)">
+      <img
+        src="{{checklist.image}}" (error)="imgError($event)">
+      <h1>{{checklist.aircraft}}</h1>
+    </div>
   </div>
-
-  <div class="aircraftPick">
-    <img
-      src="https://images.flightsim.to/images/25/a32nx-internation-airways-rebranded-8k-livery-446974-1688314014-69MKP.jpg">
-    <h1>A20N</h1>
-  </div>
-
-  <div class="aircraftPick">
-    <img
-      src="https://images.flightsim.to/images/25/a32nx-internation-airways-rebranded-8k-livery-446974-1688314014-69MKP.jpg">
-    <h1>A20N</h1>
-  </div>
-
-  <div class="aircraftPick">
-    <img
-      src="https://images.flightsim.to/images/25/a32nx-internation-airways-rebranded-8k-livery-446974-1688314014-69MKP.jpg">
-    <h1>A20N</h1>
-  </div>
-
-  <div class="aircraftPick">
-    <img
-      src="https://images.flightsim.to/images/25/a32nx-internation-airways-rebranded-8k-livery-446974-1688314014-69MKP.jpg">
-    <h1>A20N</h1>
+  <div class="addNew" (click)="newChecklist()">
+    <h2>Create a new checklist</h2>
   </div>
 </div>

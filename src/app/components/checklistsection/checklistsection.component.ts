@@ -59,8 +59,6 @@ export class ChecklistsectionComponent {
   }
 
   saveChecklist() {
-    let toSave = JSON.stringify(this.checklist);
-
     this.apiService.saveChecklist(this.checklist!).subscribe((data: any) => {
       console.log(data);
     });

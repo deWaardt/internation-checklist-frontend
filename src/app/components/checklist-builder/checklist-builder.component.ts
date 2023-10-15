@@ -7,6 +7,6 @@ import {Component, Input} from '@angular/core';
 })
 export class ChecklistBuilderComponent {
 
-  @Input() checklist: Checklist = {id: crypto.randomUUID(), aircraft: '', sections: []};
+  @Input() checklist: Checklist = {id: crypto.randomUUID(), image: '', aircraft: '', sections: []};
 
 }
