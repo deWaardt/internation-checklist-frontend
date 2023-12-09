@@ -5,7 +5,7 @@
     <div class="section-container" *ngFor="let item of checklist!.sections">
       <h3>{{item.name}}</h3>
       <div *ngFor="let check of item.items">
-        <app-checklistitem [text1]="check.text1" [text2]="check.text2"></app-checklistitem>
+        <app-checklistitem [text1]="check.text1" [text2]="check.text2" [displayType]="check.displayType"></app-checklistitem>
       </div>
     </div>
   </div>
@@ -25,9 +25,15 @@
     <input [(ngModel)]="checklist!.aircraft" value="{{checklist!.aircraft}}" (focusout)="updateAircraft()" placeholder="Aircraft type" style="font-size: 40px; text-align: center; margin-bottom: 30px">
     <div class="section-container" *ngFor="let section of checklist!.sections">
       <input [(ngModel)]="section.name" style="font-size: 20px; margin-bottom: 20px">
+      <div class="add-item">
+        <h1>Add to top</h1>
+      </div>
       <div *ngFor="let check of section.items" class="item-edit-mode">
-        <div class="add-item-container" (click)="addItemUnder(section.id, check.id)">
-          <div class="add-item2">
+        <div class="add-item-container">
+          <div class="add-item2"  (click)="addItemUnder(section.id, check.id, 0)">
+            <h3>+</h3>
+          </div>
+          <div class="add-item2"  (click)="addItemUnder(section.id, check.id, 1)">
             <h3>+</h3>
           </div>
           <div>
@@ -37,6 +43,7 @@
         <app-checklistitem
           [text1]="check.text1"
           [text2]="check.text2"
+          [displayType]="check.displayType"
           [editor]="editor"
           (text1Change)="check.text1 = $event"
           (text2Change)="check.text2 = $event">

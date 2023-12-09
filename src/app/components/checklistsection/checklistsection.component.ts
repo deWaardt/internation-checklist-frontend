@@ -26,7 +26,7 @@ export class ChecklistsectionComponent {
   addItem(sectionId: string) {
     const section = this.checklist!.sections.find(s => s.id === sectionId);
     if (section) {
-      section.items.push({id: crypto.randomUUID(), text1: '', text2: ''});
+      section.items.push({id: crypto.randomUUID(), text1: '', text2: '', displayType: 0});
     } else {
       console.warn(`Section with ID ${sectionId} not found.`);
     }
@@ -66,21 +66,28 @@ export class ChecklistsectionComponent {
 
     this.editor = false;
 
+
   }
 
   updateAircraft() {
 
   }
 
-  addItemUnder(sectionId: String, itemId: String) {
+  addItemUnder(sectionId: String, itemId: String, displayType: number) {
     const section = this.checklist!.sections.find(s => s.id === sectionId);
     if (section) {
       const index = section.items.findIndex(item => item.id === itemId);
       if (index !== -1) {
-        section.items.splice(index + 1, 0, {id: crypto.randomUUID(), text1: '', text2: ''});
+        section.items.splice(index + 1, 0, {id: crypto.randomUUID(), text1: '', text2: '', displayType: displayType});
       }
     }
   }
 
 
+  addToTop(id: String) {
+    const section = this.checklist!.sections.find(s => s.id === id);
+    if (section) {
+      section.items.unshift({id: crypto.randomUUID(), text1: '', text2: '', displayType: 0});
+    }
+  }
 }

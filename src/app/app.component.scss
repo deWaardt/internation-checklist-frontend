@@ -10,7 +10,8 @@
   background-color: #4CAD33;
 
   img {
-    max-height: 100px;
+    max-height: 50px;
+    filter: brightness(0) invert(1);
   }
 }
 

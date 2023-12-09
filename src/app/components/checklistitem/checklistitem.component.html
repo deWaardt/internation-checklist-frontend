@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="displayType === 0" class="container">
   <div class="container" *ngIf="!editor" (click)="onClick()" [class.clicked]="clicked">
     <p>{{text1}}</p>
     <!--  <h2 class="dots"></h2>-->
@@ -9,4 +9,14 @@
     <!--  <h2 class="dots"></h2>-->
     <input [(ngModel)]="text2" (change)="onText2Change(text2)">
   </div>
+</div>
+
+<div *ngIf="displayType === 1" class="top-text">
+  <div *ngIf="!editor">
+    <p>{{text1}}</p>
+  </div>
+  <div *ngIf="editor">
+    <input [(ngModel)]="text1" (change)="onText1Change(text1)">
+  </div>
+
 </div>

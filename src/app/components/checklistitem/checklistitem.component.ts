@@ -10,14 +10,16 @@ export class ChecklistitemComponent {
 
   @Input() text1: string = '';
   @Input() text2: string = '';
+  @Input() displayType: number = 0;
   @Input() editor: boolean = false;
 
   @Output() text1Change = new EventEmitter<string>();
   @Output() text2Change = new EventEmitter<string>();
 
   onClick() {
-    console.log('ChecklistitemComponent.onClick()');
+    //console.log('ChecklistitemComponent.onClick()');
     this.clicked = !this.clicked;
+    console.log(this.displayType)
   }
 
   updateValue(event: any) {
