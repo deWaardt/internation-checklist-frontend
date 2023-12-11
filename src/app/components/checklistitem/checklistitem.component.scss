@@ -15,8 +15,9 @@ p{
 }
 
 .clicked{
-  background-color: #5CDB95;
-  border: 1px solid #5CDB95;
+  //background-color: #5CDB95;
+  background-color: #4CAD33;
+  border: 1px solid #4CAD33;
 }
 
 .dots {
@@ -38,7 +39,7 @@ p{
   text-align: center;
   font-style: italic;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
 
   input{
     font-style: normal;
@@ -54,4 +55,7 @@ p{
   margin-bottom: 10px;
 }
 
+p{
+  font-family: 'Roboto', sans-serif;
+}
 

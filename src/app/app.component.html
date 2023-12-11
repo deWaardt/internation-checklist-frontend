@@ -11,19 +11,27 @@
 
 
 <div *ngIf="checklistSelected">
-  <app-checklistsection [checklist]="checklist" [editor]="editor" [editingAllowed]="editingAllowed"></app-checklistsection>
+  <app-checklistsection [checklist]="checklist" [editor]="editor"
+                        [editingAllowed]="editingAllowed"></app-checklistsection>
 </div>
 
 <div *ngIf="!checklistSelected" class="container">
   <h1 class="title">Select an aircraft</h1>
-  <div class="aircraftPickContainer">
-    <div class="aircraftPick" *ngFor="let checklist of checklists" (click)="selectChecklist(checklist)">
-      <img
-        src="{{checklist.image}}" (error)="imgError($event)">
-      <h1>{{checklist.aircraft}}</h1>
+  <div class="aircraftPickOuterContainer">
+    <div class="aircraftPickInnerContainer" *ngFor="let checklist of checklists">
+      <div class="aircraftPick" (click)="selectChecklist(checklist)">
+        <img
+          src="{{checklist.image}}" (error)="imgError($event)">
+        <h1>{{checklist.aircraft}}</h1>
+      </div>
+      <div class="deleteBtn" (click)="deleteChecklist(checklist)" *ngIf="editingAllowed">
+        <h3>Delete</h3>
+      </div>
     </div>
   </div>
   <div class="addNew" *ngIf="editingAllowed" (click)="newChecklist()">
     <h2>Create a new checklist</h2>
   </div>
 </div>
+
+

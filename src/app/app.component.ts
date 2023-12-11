@@ -33,9 +33,12 @@ export class AppComponent {
   }
 
   unselectChecklist() {
-    this.editor = false;
-    this.checklist = undefined;
-    this.checklistSelected = false;
+    this.apiService.getAllChecklists().subscribe((data: any) => {
+      this.checklists = data;
+      this.editor = false;
+      this.checklist = undefined;
+      this.checklistSelected = false;
+    });
   }
 
   imgError($event: any) {
@@ -44,5 +47,15 @@ export class AppComponent {
 
   unlockEditing() {
     this.editingAllowed = true;
+  }
+
+  deleteChecklist(checklist: Checklist) {
+    if(confirm("Are you sure to delete this checklist?")) {
+      this.apiService.deleteChecklist(checklist.id).subscribe(() => {
+        this.apiService.getAllChecklists().subscribe((data: any) => {
+          this.checklists = data;
+        });
+      });
+    }
   }
 }

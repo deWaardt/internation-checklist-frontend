@@ -98,7 +98,7 @@ h2 {
 
 }
 
-.aircraftPickContainer {
+.aircraftPickOuterContainer {
   display: flex;
   flex-direction: row;
   margin-left: 10px;
@@ -106,6 +106,13 @@ h2 {
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+.aircraftPickInnerContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .container{
@@ -143,4 +150,35 @@ h2 {
   position: absolute;
   right: 50px;
   color: white;
+}
+
+.deleteBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #F34C19;
+  border: 1px solid #F34C19;
+  border-radius: 5px;
+  width: 95%;
+  height: 40px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  cursor: pointer;
+
+  //h3 {
+  //  vertical-align: center;
+  //  margin-top: 0;
+  //  padding: 0;
+  //  height: 100%
+  //}
+}
+
+.deleteBtn:hover {
+  transition: 0.2s;
+  background-color: darkred;
 }
