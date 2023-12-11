@@ -9,7 +9,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = 'https://144.21.39.207:25565';
+  private apiUrl = 'http://144.21.39.207:25565';
 
   saveChecklist(data: Checklist) {
     return this.http.post(`${this.apiUrl}/checklist`, data);
