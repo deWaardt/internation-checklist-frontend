@@ -18,5 +18,9 @@ export class ApiService {
   getAllChecklists(): Observable<Object> {
     return this.http.get(`${this.apiUrl}/checklists`);
   }
+
+  deleteChecklist(id: string) {
+    return this.http.delete(`${this.apiUrl}/checklist/${id}`);
+  }
 }
 
