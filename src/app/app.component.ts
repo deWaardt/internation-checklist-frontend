@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {ApiService} from "./services/api.service";
+import {v4 as uuidv4} from "uuid";
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,7 @@ export class AppComponent {
   }
 
   newChecklist() {
-    this.checklist = {id: crypto.randomUUID(), image: '', aircraft: '', sections: []};
+    this.checklist = {id: uuidv4(), image: '', aircraft: '', sections: []};
     this.checklistSelected = true;
     this.editor = true;
   }

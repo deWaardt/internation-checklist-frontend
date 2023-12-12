@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {ApiService} from "../../services/api.service";
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-checklistsection',
@@ -20,13 +21,13 @@ export class ChecklistsectionComponent {
 
   addSection() {
     const newId = crypto.randomUUID();
-    this.checklist!.sections.push({id: crypto.randomUUID(), name: '', items: []});
+    this.checklist!.sections.push({id: uuidv4(), name: '', items: []});
   }
 
   addItem(sectionId: string) {
     const section = this.checklist!.sections.find(s => s.id === sectionId);
     if (section) {
-      section.items.push({id: crypto.randomUUID(), text1: '', text2: '', displayType: 0});
+      section.items.push({id: uuidv4(), text1: '', text2: '', displayType: 0});
     } else {
       console.warn(`Section with ID ${sectionId} not found.`);
     }
@@ -78,7 +79,7 @@ export class ChecklistsectionComponent {
     if (section) {
       const index = section.items.findIndex(item => item.id === itemId);
       if (index !== -1) {
-        section.items.splice(index + 1, 0, {id: crypto.randomUUID(), text1: '', text2: '', displayType: displayType});
+        section.items.splice(index + 1, 0, {id: uuidv4(), text1: '', text2: '', displayType: displayType});
       }
     }
   }
@@ -87,7 +88,7 @@ export class ChecklistsectionComponent {
   addToTop(id: String) {
     const section = this.checklist!.sections.find(s => s.id === id);
     if (section) {
-      section.items.unshift({id: crypto.randomUUID(), text1: '', text2: '', displayType: 0});
+      section.items.unshift({id: uuidv4(), text1: '', text2: '', displayType: 0});
     }
   }
 }
