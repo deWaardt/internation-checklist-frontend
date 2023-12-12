@@ -20,7 +20,6 @@ export class ChecklistsectionComponent {
 
 
   addSection() {
-    const newId = crypto.randomUUID();
     this.checklist!.sections.push({id: uuidv4(), name: '', items: []});
   }
 
