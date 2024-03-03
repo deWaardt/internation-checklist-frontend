@@ -15,6 +15,9 @@ export class AppComponent {
   checklistSelected: boolean = false;
   editor: boolean = false;
   editingAllowed: boolean = false;
+  showDialog: boolean = false;
+  passwdString: string = '';
+  passwordIncorrect = false;
 
   constructor(private apiService: ApiService) {
     this.apiService.getAllChecklists().subscribe((data: any) => {
@@ -47,7 +50,11 @@ export class AppComponent {
   }
 
   unlockEditing() {
-    this.editingAllowed = true;
+    if(this.editingAllowed){
+      this.editingAllowed = false;
+      return;
+    }
+    this.showDialog = true;
   }
 
   deleteChecklist(checklist: Checklist) {
@@ -57,6 +64,17 @@ export class AppComponent {
           this.checklists = data;
         });
       });
+    }
+  }
+
+  enterPassword() {
+    if(this.passwdString === "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"){
+      this.showDialog = false;
+      this.editingAllowed = true;
+      this.passwordIncorrect = false;
+    }
+    else{
+      this.passwordIncorrect = true;
     }
   }
 }

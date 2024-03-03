@@ -3,10 +3,6 @@
     <img src="https://icons.veryicon.com/png/o/miscellaneous/tool-icon-library/return-104.png">
   </div>
   <img src="assets/logo.png" class="logo">
-
-<!--  <div class="unlockBtn" (click)="unlockEditing()">-->
-<!--    <h1>Unlock editing</h1>-->
-<!--  </div>-->
 </div>
 
 
@@ -29,9 +25,22 @@
       </div>
     </div>
   </div>
+
   <div class="addNew" *ngIf="editingAllowed" (click)="newChecklist()">
     <h2>Create a new checklist</h2>
   </div>
+  <div class="unlockBtn addNew" (click)="unlockEditing()">
+    <h1 *ngIf="!editingAllowed">Unlock editing</h1>
+    <h1 *ngIf="editingAllowed">Lock editing</h1>
+  </div>
 </div>
 
-
+<div class="passwordDialog" *ngIf="showDialog">
+  <h1>Enter password</h1>
+  <input type="password" [textContent]="''" [(ngModel)]="passwdString">
+  <div style="display: flex; flex-direction: row;">
+    <button [textContent]="'Unlock'" (click)="enterPassword()"></button>
+    <button [textContent]="'Cancel'" (click)="showDialog = false"></button>
+  </div>
+  <p *ngIf="passwordIncorrect">Password incorrect</p>
+</div>

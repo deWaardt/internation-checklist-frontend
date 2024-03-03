@@ -17,14 +17,12 @@ export class ChecklistitemComponent {
   @Output() text2Change = new EventEmitter<string>();
 
   onClick() {
-    //console.log('ChecklistitemComponent.onClick()');
     this.clicked = !this.clicked;
     console.log(this.displayType)
   }
 
   updateValue(event: any) {
     this.text2 = event.target.value;
-
   }
 
 

@@ -147,9 +147,7 @@ h2 {
 }
 
 .unlockBtn{
-  position: absolute;
-  right: 50px;
-  color: white;
+  color: black;
 }
 
 .deleteBtn {
@@ -181,4 +179,45 @@ h2 {
 .deleteBtn:hover {
   transition: 0.2s;
   background-color: darkred;
+}
+
+.passwordDialog{
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  position: fixed; /* Fixed positioning */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust to perfectly center the div */
+  width: 600px;
+  height: 200px;
+  background-color: #efefef;
+
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-shadow: #cccccc 0px 0px 5px 0px;
+
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  input{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    text-align: left;
+    border: none;
+    background-color: white;
+    width: 100%;
+    border: solid 1px;
+    border-radius: 5px;
+  }
+
+  button{
+    width: 100px;
+    height: 40px;
+    margin-top: 20px;
+  }
 }
