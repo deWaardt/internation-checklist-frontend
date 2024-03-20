@@ -4,4 +4,5 @@ interface ChecklistItem{
   text2: string;
 
   displayType: number;
+  flag: number;
 }

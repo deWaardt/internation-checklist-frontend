@@ -54,6 +54,12 @@ export class AppComponent {
       this.editingAllowed = false;
       return;
     }
+    // if(localStorage.getItem("authorized") == "true"){
+    //   this.showDialog = false;
+    //   this.editingAllowed = true;
+    //   this.passwordIncorrect = false;
+    //   return;
+    // }
     this.showDialog = true;
   }
 
@@ -72,6 +78,8 @@ export class AppComponent {
       this.showDialog = false;
       this.editingAllowed = true;
       this.passwordIncorrect = false;
+      //localStorage.setItem("authorized","true");
+
     }
     else{
       this.passwordIncorrect = true;

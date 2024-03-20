@@ -12,6 +12,7 @@ export class ChecklistitemComponent {
   @Input() text2: string = '';
   @Input() displayType: number = 0;
   @Input() editor: boolean = false;
+  @Input() flag: number = 1;
 
   @Output() text1Change = new EventEmitter<string>();
   @Output() text2Change = new EventEmitter<string>();
@@ -19,6 +20,14 @@ export class ChecklistitemComponent {
   onClick() {
     this.clicked = !this.clicked;
     console.log(this.displayType)
+  }
+
+  getBgColor(flag: number): string {
+    if (flag === 2) {
+      return "body_orange"
+    } else if (flag == 3) {
+      return "body_blue"
+    } else return "body_normal"
   }
 
   updateValue(event: any) {

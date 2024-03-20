@@ -3,25 +3,31 @@
        style="with: 45px; height: 45px; margin-top: 20px; cursor: pointer" (click)="editor = true">
   <div *ngIf="!editor" class="container">
     <h1>{{checklist!.aircraft}}</h1>
+    <h3>Orange items are not required for a turnaround</h3>
+    <h3 style="margin-top: 0px; margin-bottom: 10px">Blue items are only required if using GSX</h3>
+<!--    <div style="display: flex; flex-direction: row; justify-content: space-evenly">-->
+<!--      <button style="margin-bottom: 10px; height: 40px; width: 190px;" [textContent]="'Hide/Unhide GSX items'" (click)="hideGSX()"></button>-->
+<!--      <button style="margin-bottom: 10px; height: 40px; width: 190px" [textContent]="'Hide/Unhide turnaround items'" (click)="hideGSX()"></button>-->
+<!--    </div>-->
     <div *ngFor="let item of checklist!.sections">
       <div class="section-title">
         <h3>{{item.name}}</h3>
       </div>
       <div class="section-container">
         <div *ngFor="let check of item.items">
-          <app-checklistitem [text1]="check.text1" [text2]="check.text2"
-                             [displayType]="check.displayType"></app-checklistitem>
+          <app-checklistitem *ngIf="showItem(check.flag)" [text1]="check.text1" [text2]="check.text2"
+                             [displayType]="check.displayType" [flag]="check.flag"></app-checklistitem>
         </div>
       </div>
     </div>
   </div>
 
   <div *ngIf="editor" class="container">
-    <div (click)="saveChecklist()" class="btnContainer">
-      <div class="saveBtn">
+    <div class="btnContainer">
+      <div class="saveBtn" (click)="saveChecklist()">
         <h1>Save</h1>
       </div>
-      <div class="discardBtn">
+      <div class="discardBtn" (click)="discardChanges()">
         <h1>Discard</h1>
       </div>
     </div>
@@ -32,7 +38,8 @@
            placeholder="Aircraft type" style="font-size: 40px; text-align: center; margin-bottom: 30px">
     <div class="section-container" *ngFor="let section of checklist!.sections">
       <div class="section-title">
-        <input [(ngModel)]="section.name" style="font-size: 20px; margin-bottom: 20px">
+        <input [(ngModel)]="section.name"
+               style="font-size: 20px; width: 100%; background-color: transparent; color: white; border: 1px solid white; text-align: center">
       </div>
       <div class="add-item" (click)="addToTop(section.id)">
         <h1>Add to top</h1>
@@ -40,10 +47,12 @@
       <div *ngFor="let check of section.items" class="item-edit-mode">
         <div class="add-item-container">
           <div class="add-item2" (click)="addItemUnder(section.id, check.id, 0)">
-            <h3>+</h3>
+            <!--            <h3>+</h3>-->
+            <img src="assets/checkitem.svg">
           </div>
           <div class="add-item2" (click)="addItemUnder(section.id, check.id, 1)">
-            <h3>+</h3>
+            <!--            <h3>+</h3>-->
+            <img src="assets/toptext.svg">
           </div>
           <div>
             <p>-----------</p>
@@ -57,9 +66,17 @@
           (text1Change)="check.text1 = $event"
           (text2Change)="check.text2 = $event">
         </app-checklistitem>
+
+        <div *ngIf="check.displayType != 1" (click)="setTurnaroundFlag(section.id, check.id)">
+          <img src="assets/turnaround.svg" [class.flag_turnaround]="check.flag==2">
+        </div>
+        <div *ngIf="check.displayType != 1" (click)="setGSXFlag(section.id, check.id)">
+          <img src="assets/gsx.svg" [class.flag_gsx]="check.flag==3">
+        </div>
         <div class="delete-item" (click)="removeItem(section.id, check.id)">
           <p>-</p>
         </div>
+
       </div>
       <div *ngIf="section.items.length == 0" class="add-item" (click)="addItem(section.id)">
         <h1>+</h1>

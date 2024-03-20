@@ -1,4 +1,4 @@
-<div *ngIf="displayType === 0" class="container">
+<div *ngIf="displayType === 0" class="container" [className]="getBgColor(flag)">
   <div class="container" *ngIf="!editor" (click)="onClick()" [class.clicked]="clicked">
     <p>{{text1}}</p>
     <!--  <h2 class="dots"></h2>-->
